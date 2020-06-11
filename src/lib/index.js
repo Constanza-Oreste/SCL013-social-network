@@ -35,20 +35,18 @@ export const createUser = () => {
 
 
 }
+//Funcion para agregar comentarios a la DB
 export const createComment = () => {
-  //Funcion para guardar los comentarios
-
   let comment=document.getElementById('txtcomment').value;
 
   console.log("llama la funcion");
-  //Agregar comentarios
   firebase.firestore().collection("comentarios").add({
       usuario: "usuario",
       comment: comment,
       likes: 1
   })
       .then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
+      console.log("Guardando comentario");
       document.getElementById('txtcomment').value ='';
 })
 .catch(function(error) {
@@ -56,23 +54,7 @@ console.error("Error adding document: ", error);
 });
 
 }
+//Funcion leer comentarios desde DB
 
-/*export const createComment = () => {
-  let comment=document.getElementById('txtcomment').value;
 
-  console.log("llama la funcion");
-  //Agregar comentarios
-  db.collection("comentarios").add({
-    usuario: "usuario",
-    comment: comment,
-    likes: 1
-  })
-  .then(function(docRef) {
-  console.log("Document written with ID: ", docRef.id);
-  document.getElementById('txtcomment').value ='';
-  })
-  .catch(function(error) {
-  console.error("Error adding document: ", error);
-  });
-  
-} */
+

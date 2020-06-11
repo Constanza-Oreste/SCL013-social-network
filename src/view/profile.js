@@ -1,8 +1,8 @@
 
 import {createComment} from '../lib/index.js'
 
+
 export const profile =() =>{
-    const divProfile=document.createElement('div');
     const viewProfile=`
     <section id="section-father">
     <section class="profile">
@@ -28,14 +28,37 @@ export const profile =() =>{
                 
             </form>
         </div>
+        <div class="comments-container">
+        <p id="prueba"></p>
+        </div>
     </section>
 </section>
 `
-divProfile.innerHTML = viewProfile;
+const divProfile=document.createElement('div');
+
+    console.log("Entra a la funcion leer");
+    //let readComment=divProfile.querySelector("#comments-container");
+    divProfile.innerHTML = viewProfile;
+
+    const muro=divProfile.querySelector("#prueba");
+    console.log(muro);
+    firebase.firestore().collection("comentarios").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data().comment}`);
+         muro.innerHTML+=`
+         <p>${doc.data().comment}</p>
+         `
+          
+          
+      });
+    });
+  
+
 const btnComment = divProfile.querySelector('#btn-comment')
 btnComment.addEventListener('click', () => {
    console.log("AQUIIIII");
     createComment();
+
 })
 return divProfile;
 }
