@@ -6,17 +6,17 @@ export const profile =() =>{
     const viewProfile=`
     <section id="section-father">
     <section class="profile">
-        <div class="container">
-            <div class="profile-wrapper">
+        
+            
                 <div class="profile-image-container">
-                    <img src="img/dragon.jpg" class="profilePhoto">
+                    <img src="img/profile.jpg" class="profilePhoto">
                     <h1>NOMBRE</h1>
                     <p class="city">Santiago</p>
                     <p class="description">Descripcion perfil</p>
                     
                 </div>
-            </div>
-        </div>
+            
+        
     </section>
     <section class="posts">
         <div class="posts-container">
@@ -28,7 +28,7 @@ export const profile =() =>{
                 
             </form>
         </div>
-        <div class="comments-container">
+        <div class="commentsContainer">
         <p id="prueba"></p>
         </div>
     </section>
@@ -56,7 +56,7 @@ const divProfile=document.createElement('div');
 
 const btnComment = divProfile.querySelector('#btn-comment')
 btnComment.addEventListener('click', () => {
-   console.log("AQUIIIII");
+   
     createComment();
 
 })
